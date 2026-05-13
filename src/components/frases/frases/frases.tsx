@@ -1,4 +1,4 @@
-import { Container } from "./styled";
+import { Content, Tags } from "./styled";
 
 type FrasesProps =  {
   title: string;
@@ -12,12 +12,15 @@ interface Phrases {
 }
 export function Frases ({phrases}: Phrases){
   return (
-    <Container>
+    <Content>
       <p>{phrases.title}</p>
       <p>{phrases.description}</p>
 
-      <a href=""> {phrases.link1}</a>
-      <a href="">{phrases.link2}</a>
-    </Container>
+      <Tags>
+        <a href=""> {phrases.link1}</a>
+        <a href="">{phrases.link2}</a>
+      </Tags>
+
+    </Content>
   )
 }

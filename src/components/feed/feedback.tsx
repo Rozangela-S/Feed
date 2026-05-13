@@ -14,8 +14,12 @@ export function FeedBack({onSubmit}: Feed) {
     setTex('')
   } 
 
- 
-
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if(e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSubmit()
+    }
+  } 
   return (
     <Container>
       <p>Deixe um feedback</p>
@@ -24,6 +28,7 @@ export function FeedBack({onSubmit}: Feed) {
         placeholder="Deixe um comentário"
         value={text}
         onChange={(e) => setTex(e.target.value)}
+        onKeyDown={handleKeyDown}
        
       />
       <button onClick={handleSubmit}>Publicar</button>

@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import { Header } from './components/header/header';
-import { Frases } from './components/frases/frases/frases';
-import { Phrases, users } from './mock/User';
-import { FeedBack } from './components/feed/feedback';
-import { Message } from './components/message/message';
+import { Container, Wrapper } from './styles';
+import { Sidebar } from './components/sidebar/sidebar';
+import { Post } from './components/post/post';
 
 
-interface Messagetype {
+export interface Messagetype {
   id: number;
   text: string;
   hour: string;
@@ -34,16 +32,19 @@ function App() {
     ])
   }
   return (
-    <div>
-      <Header user={users}/>
-      <Frases phrases={Phrases} />
-      <FeedBack onSubmit={handleAddMessage}/>
-      {messages.map(mgs => (
-        <Message key={mgs.id} id={mgs.id} text={mgs.text} onDelete={handleDelete} hour={mgs.hour} />
-      ))}
+    <Container>
+      <Wrapper>
+        <Sidebar/>
 
-     
-    </div>
+        <main>
+          <Post
+          onSubmit={handleAddMessage}
+          onDelete={handleDelete}
+          comments={messages}
+          />
+        </main>
+      </Wrapper>
+    </Container>
   )
 }
 

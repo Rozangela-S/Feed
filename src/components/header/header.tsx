@@ -23,7 +23,7 @@ export function Header({user}: User) {
           <span>{user.role}</span>
         </Infos>
       </Profile>
-      <p>{user.hour}</p>
+      <time>{user.hour}</time>
     </Container>
   )
 }
